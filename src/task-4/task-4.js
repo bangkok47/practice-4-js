@@ -1,8 +1,16 @@
-
 export default function showDialog(dialogEl) {
-    $(dialogEl).modal("show");
+  $(dialogEl).modal('show');
 
-    // Change me!
+  return new Promise((res, rej) => {
+    dialogEl.addEventListener('click', (e) => {
+      let target = e.target;
 
-    return new Promise();
+      if (target.classList.contains('yes')) {
+        res();
+        console.log(target);
+      } else if (target.classList.contains('no')) {
+        rej();
+      }
+    });
+  });
 }
